@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:njarafront/constant/color.dart';
 import 'package:njarafront/controller/navigation/simpleNavigation.dart';
 import 'package:njarafront/page/search/search.dart';
+import 'package:njarafront/page/tabs/contact/contactPage.dart';
+import 'package:njarafront/page/tabs/engine/enginePage.dart';
+import 'package:njarafront/page/tabs/home/homePage.dart';
+import 'package:njarafront/page/tabs/work/workPage.dart';
 
 class TabsPage extends StatefulWidget {
   const TabsPage({Key? key}) : super(key: key);
@@ -19,6 +23,12 @@ class _TabsPageState extends State<TabsPage> {
     });
   }
 
+  List _screen = [
+    const HomePage(),
+    const EnginePage(),
+    const WorkPage(),
+    const ContactPage(),
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,11 +45,7 @@ class _TabsPageState extends State<TabsPage> {
         ],
       ),
       drawer: const Drawer(),
-      body: const SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: Center(child: Text('Home')),
-      ),
+      body: _screen[index],
       bottomNavigationBar: _bottomNavigationBar(),
     );
   }
